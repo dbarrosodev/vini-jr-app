@@ -10,10 +10,7 @@ export default function TelaInicio({ navigation }) {
                 style={styles.foto}
             />
             <Text style={styles.titulo}>⚽ App Oficial do Vini Jr.</Text>
-            <Button
-                title="Ver Títulos"
-                onPress={() => navigation.navigate('Titulos')}
-            />
+            <Button title="Ver Títulos" buttonStyle={styles.button} onPress={() => navigation.navigate('Titulos')} />
         </View>
     );
 }
@@ -28,7 +25,7 @@ const styles = StyleSheet.create({
     },
     titulo: {
         fontSize: 24,
-        fontWeight: 'bold',
+        fontFamily: 'Inter_700Bold',
         color: '#fff',
         marginBottom: 15,
     },
@@ -37,5 +34,11 @@ const styles = StyleSheet.create({
         height: 400,
         // borderRadius: 70,
         marginBottom: 15,
+    },
+    button: {
+        backgroundColor: '#fff',
+        color: '#000',
+        padding: 10,
+        borderRadius: 5,
     },
 });

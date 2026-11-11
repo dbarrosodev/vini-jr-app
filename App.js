@@ -1,3 +1,4 @@
+import { useFonts, Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/inter';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TelaInicio from './src/screens/TelaInicio';
@@ -6,6 +7,15 @@ import TelaTitulos from './src/screens/TelaTitulos';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+    const [fontsLoaded] = useFonts({
+        Inter_400Regular,
+        Inter_700Bold,
+    });
+
+    if (!fontsLoaded) {
+        return null;
+    }
+    
     return (
         <NavigationContainer>
             <Stack.Navigator 
