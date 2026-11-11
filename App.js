@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TelaInicio from './src/screens/TelaInicio';
 import TelaTitulos from './src/screens/TelaTitulos';
+import TelaEstatisticas from './src/screens/TelaEstatisticas';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,7 +16,7 @@ export default function App() {
     if (!fontsLoaded) {
         return null;
     }
-    
+
     return (
         <NavigationContainer>
             <Stack.Navigator 
@@ -27,6 +28,8 @@ export default function App() {
             >
                 <Stack.Screen name="Inicio" component={TelaInicio} options={{ title: 'Perfil do Vini Jr.' }} />
                 <Stack.Screen name="Titulos" component={TelaTitulos} options={{ title: 'Galeria de Troféus' }} />
+                <Stack.Screen name="Estatisticas" component={TelaEstatisticas} options={{ title: 'Estatísticas' }} />
+                
             </Stack.Navigator>
         </NavigationContainer>
     );
