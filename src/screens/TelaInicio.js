@@ -1,4 +1,4 @@
-import { Text, View, Button, StyleSheet, Image } from 'react-native';
+import { Text, View, Pressable, StyleSheet, Image } from 'react-native';
 import FundoEntrevista from '../components/FundoEntrevista';
 
 export default function TelaInicio({ navigation }) {
@@ -10,7 +10,9 @@ export default function TelaInicio({ navigation }) {
                 style={styles.foto}
             />
             <Text style={styles.titulo}>⚽ App Oficial do Vini Jr.</Text>
-            <Button title="Ver Títulos" buttonStyle={styles.button} onPress={() => navigation.navigate('Titulos')} />
+            <Pressable style={styles.button} onPress={() => navigation.navigate('Titulos')}>
+                <Text style={styles.buttonText}>Ver Títulos</Text>
+            </Pressable>
         </View>
     );
 }
@@ -37,8 +39,14 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: '#fff',
-        color: '#000',
-        padding: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 20,
         borderRadius: 5,
+        marginTop: 10,
+    },
+    buttonText: {
+        color: '#000',
+        fontFamily: 'Inter_700Bold',
+        fontSize: 16,
     },
 });

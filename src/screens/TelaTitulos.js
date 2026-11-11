@@ -1,4 +1,4 @@
-import { Text, View, Button, StyleSheet, ScrollView } from 'react-native';
+import { Text, View, Pressable, StyleSheet, ScrollView } from 'react-native';
 import FundoEntrevista from '../components/FundoEntrevista';
 
 export default function TelaTitulos({ navigation }) {
@@ -17,18 +17,24 @@ export default function TelaTitulos({ navigation }) {
                     <Text style={styles.item}>• 2x Supercopa da UEFA (2022 e 2024)</Text>
                     <Text style={styles.item}>• 3x Copa do Mundo de Clubes da FIFA / Copa Intercontinental (2018, 2022 e 2024)</Text>
                     <Text style={styles.item}>• 1x Copa do Rei (2022–23)</Text>
+                </View>
 
+                <View style={styles.card}>
                     <Text style={styles.subtitulo}>Pela Seleção Brasileira (Categorias de Base)</Text>
 
                     <Text style={styles.item}>• 1x Campeonato Sul-Americano Sub-17 (2017)</Text>
                     <Text style={styles.item}>• 1x Campeonato Sul-Americano Sub-15 (2015)</Text>
-
+                </View>
+                
+                <View style={styles.card}>
                     <Text style={styles.subtitulo}>Prêmios Individuais de Destaque</Text>
 
                     <Text style={styles.item}>• The Best FIFA / Melhor Jogador do Mundo (2024)</Text>
                 </View>
 
-                <Button title="Voltar" buttonStyle={styles.button} onPress={() => navigation.goBack()} />
+                <Pressable style={styles.button} onPress={() => navigation.goBack()}>
+                    <Text style={styles.buttonText}>Voltar</Text>
+                </Pressable>
             </ScrollView>
         </View>
     );
@@ -72,8 +78,14 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: '#fff',
-        color: '#000',
-        padding: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 20,
         borderRadius: 5,
+        marginTop: 10,
+    },
+    buttonText: {
+        color: '#000',
+        fontFamily: 'Inter_700Bold',
+        fontSize: 16,
     },
 });
