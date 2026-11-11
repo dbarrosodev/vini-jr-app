@@ -1,4 +1,5 @@
-import { Text, View, Button, StyleSheet, Image } from 'react-native';
+import { Text, View, Button, StyleSheet } from 'react-native';
+import { Image } from 'expo-image';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -7,6 +8,7 @@ const Stack = createNativeStackNavigator();
 function TelaInicio({ navigation }) {
     return (
         <View style={styles.container}>
+            <FundoEntrevista />
             <Image
                 source={require('./assets/vini_jr.png')}
                 style={styles.foto}
@@ -23,6 +25,7 @@ function TelaInicio({ navigation }) {
 function TelaTitulos({ navigation }) {
     return (
         <View style={styles.container}>
+            <FundoEntrevista />
             <Text style={styles.titulo}>🏆 Títulos de Vini Jr.</Text>
             <Text style={styles.lista}>
                 Pelo Real Madrid
@@ -51,12 +54,47 @@ function TelaTitulos({ navigation }) {
     );
 }
 
+const TIMES = [
+    {
+        logo: require('./assets/cbf_bw.svg'),
+        cor: '#000',
+    },
+    {
+        logo: require('./assets/rmcf_bw.svg'),
+        cor: '#fff',
+    }
+]
+
+function FundoEntrevista() {
+    const quadrados = Array.from({ length: 45 });
+
+    return (
+        <View style={styles.fundoXadrez}>
+            {quadrados.map((_, i) => {
+                const time = TIMES[i % 2];
+
+                return (
+                    <View key={i} style={[styles.quadrados, { backgroundColor: time.cor }]}>
+                        <Image source={time.logo} style={styles.logoPatrocinio} contentFit='contain' />
+                    </View>
+                )
+            })}
+        </View>
+    );
+}
+
 export default function App() {
     return (
         <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen name="Inicio" component={TelaInicio} />
-                <Stack.Screen name="Titulos" component={TelaTitulos} />
+            <Stack.Navigator 
+                screenOptions={{
+                    headerStyle: { backgroundColor: '#fff' },
+                    headerTintColor: '#000',
+                    headerTitleStyle: { fontWeight: 'bold' },
+                }}
+            >
+                <Stack.Screen name="Inicio" component={TelaInicio} options={{ title: 'Perfil do Vini Jr.' }} />
+                <Stack.Screen name="Titulos" component={TelaTitulos} options={{ title: 'Galeria de Troféus' }} />
             </Stack.Navigator>
         </NavigationContainer>
     );
@@ -65,7 +103,7 @@ export default function App() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#1a1a2e',
+        backgroundColor: '#000',
         alignItems: 'center',
         justifyContent: 'center',
         padding: 20,
@@ -73,7 +111,7 @@ const styles = StyleSheet.create({
     titulo: {
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#ffd700',
+        color: '#fff',
         marginBottom: 15,
     },
     foto: {
@@ -87,4 +125,25 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         marginBottom: 10,
     },
+    fundoXadrez: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        opacity: 0.15,
+    },
+    quadrados: {
+        width: '20%',
+        height: 100,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    logoPatrocinio: {
+        width: 80,
+        height: 80,
+        opacity: 0.6,
+    }
 });
