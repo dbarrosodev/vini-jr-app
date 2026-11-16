@@ -10,9 +10,6 @@ export default function TelaInicio({ navigation }) {
                 style={styles.foto}
             />
             <Text style={styles.titulo}>⚽ App Oficial do Vini Jr.</Text>
-            <Pressable style={styles.button} onPress={() => navigation.navigate('Titulos')}>
-                <Text style={styles.buttonText}>Ver Títulos</Text>
-            </Pressable>
             <Pressable style={styles.button} onPress={() => navigation.navigate('Estatisticas')}>
                 <Text style={styles.buttonText}>Ver Estatísticas</Text>
             </Pressable>
